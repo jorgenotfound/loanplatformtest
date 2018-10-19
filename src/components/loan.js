@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React from 'react'
 import { connect } from 'react-redux';
 import OwnerForm from './owner';
 import BusinessForm from './business';
@@ -28,15 +28,14 @@ class ConnectedLoanForm extends React.Component {
     }
 
     resetForm() {
-        console.log(this.state)
         this.setState({ page: 1 })
     }
 
     validate(values){
-        this.setState({loan: values})
+        this.nextPage(values);
         let amount = this.state.loan.amount
         this.props.validate_loan(amount);
-        this.nextPage();
+
     }
 
     render (){
