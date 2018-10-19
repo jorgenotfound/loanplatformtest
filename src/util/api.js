@@ -1,9 +1,9 @@
 
-const baseURL = 'https://tornadoapi.herokuapp.com/';
-//const baseURL = 'http://localhost:5000/';
+const baseURL = 'https://loanapi.herokuapp.com/';
+//const baseURL = 'http://localhost:8000/';
 
 const test = (data) => {
-    if(data == 50000){
+    if(data === 50000){
         return 'undecided';}
 
     return (data <50000) ? 'approved': 'declined';
@@ -11,12 +11,13 @@ const test = (data) => {
 
 function post(type, data) {
     return new Promise((resolve, reject) =>{
-        fetch(baseURL+type, {
+        fetch(`${baseURL}${type}`, {
             method: 'POST',
             body: JSON.stringify(data)
         })
-            .then((response) => response.json())
-            .then((res) => {
+            .then((response) => {
+              return response.json()
+            }).then((res) => {
                 resolve(res);
             })
             .catch((error) => {
