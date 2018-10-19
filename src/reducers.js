@@ -1,7 +1,6 @@
 import {RESET_LOAN_DATA, VALIDATE_LOAN} from './actions'
 
 const initialState = {
-  hello: 'helloooo',
   owner: {
       name:'',
       ssn:'',

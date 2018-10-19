@@ -28,7 +28,7 @@ class ConnectedLoanForm extends React.Component {
     }
 
     resetForm() {
-        this.setState({ page: 1 })
+        this.setState({ page: 1 , loan: {}})
     }
 
     validate(values){
