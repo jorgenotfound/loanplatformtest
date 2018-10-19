@@ -1,73 +1,44 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
+import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 
 const OwnerForm = (props) => {
     const { handleSubmit, previousPage } = props
     return (
         <form onSubmit={handleSubmit}>
-            <div>
-                <label>Name</label>
-                <Field name="name" component = {name =>
-                    <div>
-                      <input type="text" {...name} placeholder="Name"/>
-                      {name.touched && name.error && <span>{name.error}</span>}
-                    </div>
-                } />
-             </div>
-            <div>
-                <label>Social Security Number</label>
-                <Field name="ssn" component = {ssn =>
-                    <div>
-                      <input type="text" {...ssn} placeholder="ssn"/>
-                      {ssn.touched && ssn.error && <span>{ssn.error}</span>}
-                    </div>
-                } />
-            </div>
-            <div>
-                <label>Email</label>
-                <Field name="email" component = {email =>
-                    <div>
-                      <input type="email" {...email} placeholder="email"/>
-                      {email.touched && email.error && <span>{email.error}</span>}
-                    </div>
-                } />
-            </div>
-            <div>
-                <label>City</label>
-                <Field name="city" component = {city =>
-                    <div>
-                      <input type="text" {...city} placeholder="City"/>
-                      {city.error && <span>{city.error}</span>}
-                    </div>
-                } />
-            </div>
-            <div>
-                <label>State</label>
-                <Field name="city" component = {state =>
-                    <div>
-                      <input type="text" {...state} placeholder="State"/>
-                      {state.error && <span>{state.error}</span>}
-                    </div>
-                } />
-            </div>
-            <div>
-                <label>Postal code</label>
-                <Field name="postalCode" component = {postalCode =>
-                    <div>
-                      <input type="text" {...postalCode} placeholder="Postal code"/>
-                      {postalCode.error && <span>{postalCode.error}</span>}
-                    </div>
-                } />
-            </div>
-          <div>
-            <button type="button" className="previous" onClick={previousPage}>Previous</button>
-            <button type="submit" className="next">Next</button>
-          </div>
+            <FormGroup>
+                <ControlLabel>Name</ControlLabel>
+                <Field name="name" placeholder="name" component={FormControl} type="text" />
+             </FormGroup>
+            <FormGroup>
+                <ControlLabel>Social Security Number</ControlLabel>
+                <Field name="ssn" placeholder="Social Security number" component={FormControl} type="text" />
+            </FormGroup>
+            <FormGroup>
+                <ControlLabel>Email</ControlLabel>
+                <Field name="email" placeholder="Email" component={FormControl} type="email" />
+            </FormGroup>
+            <FormGroup>
+                <ControlLabel>City</ControlLabel>
+                <Field name="city" placeholder="City" component={FormControl} type="text" />
+            </FormGroup>
+            <FormGroup>
+                <ControlLabel>State</ControlLabel>
+                <Field name="state" placeholder="State" component={FormControl} type="text" />
+            </FormGroup>
+            <FormGroup>
+                <ControlLabel>Postal code</ControlLabel>
+                <Field name="postalCode" placeholder="Postal code" component={FormControl} type="text" />
+            </FormGroup>
+          <FormGroup className="text-right">
+            <Button type="button" className="previous" onClick={previousPage} bsStyle="default">Previous</Button>
+            <Button type="submit" className="next" bsStyle="primary">Validate</Button>
+          </FormGroup>
         </form>
     );
 }
 
 export default reduxForm({
   form: 'loan',
-  destroyOnUnmount: false
+  destroyOnUnmount: false,
 })(OwnerForm)

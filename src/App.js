@@ -1,27 +1,32 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import LoanForm from "./components/loan";
+import { Grid, Row, Col, PageHeader } from 'react-bootstrap';
 
 class ConnectedApp extends Component {
-    state = {
-        'owner': {},
-        'business':{},
-        'amount': 0
-    }
+
   render() {
     return (
       <div className="App">
-        <header>
-        <h1>Loan platform</h1>
-        </header>
-        <p>{this.props.hello}</p>
-        <LoanForm />
+        <Grid>
+        <Row>
+            <Col sm={6} smOffset={3} className="text-center">
+            <PageHeader>
+              Loan Platform <small>LendingFront</small>
+            </PageHeader>
+            </Col>
+        </Row>
+        <Row>
+            <Col sm={4} smOffset={4}>
+            <p>{this.props.hello}</p>
+            <LoanForm onSubmit={this.validateAmount}/>
+            </Col>
+        </Row>
+        </Grid>
       </div>
     );
   }
 }
-
-const mapDispatchToProps = (dispatch) => {};
 
 const mapStateToProps = (state) =>{
     return {hello: state.hello};
