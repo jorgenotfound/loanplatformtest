@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { HashRouter, Route} from 'react-router-dom';
-import { createBrowserHistory } from 'history';
 import LoanForm from "./components/loan";
 import { Grid, Row, Col, PageHeader } from 'react-bootstrap';
-
-const BrowserHistory = createBrowserHistory();
 
 class ConnectedApp extends Component {
 
@@ -22,9 +18,7 @@ class ConnectedApp extends Component {
         </Row>
         <Row>
             <Col sm={4} smOffset={4}>
-            <HashRouter history={BrowserHistory} >
-              <Route path="/" component={LoanForm} />
-            </HashRouter>
+                <LoanForm/>
             </Col>
         </Row>
         </Grid>
