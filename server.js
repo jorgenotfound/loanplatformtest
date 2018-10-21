@@ -1,11 +1,15 @@
 const express = require('express');
+const bodyParser = require('body-parser')
+const path = require('path');
 const app = express();
+app.use(express.static(path.join(__dirname, 'build')));
 
-// Since the root/src dir contains our index.html
-app.use(express.static(__dirname));
+app.get('/ping', function (req, res) {
+ return res.send('pong');
+});
 
-// Heroku bydefault set an ENV variable called PORT=443
-//  so that you can access your site with https default port.
-// Falback port will be 8080; basically for pre-production test in localhost
-// You will use $ npm run prod for this
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 app.listen(process.env.PORT || 8080);
